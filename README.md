@@ -12,3 +12,12 @@ npm run dev
 # open your browser =>
 localhost:8080
 ```
+# Credits 
+## STL models
+http://www.thingiverse.com/thing:1557258/#files
+
+http://www.thingiverse.com/thing:1274374/#files
+
+http://www.thingiverse.com/thing:242956/#files
+
+http://www.thingiverse.com/thing:1551302/#files
