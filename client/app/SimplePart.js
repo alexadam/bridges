@@ -231,7 +231,7 @@ const generateData = (startX) => [
         position: [-100 + startX, 122, 250],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -239,7 +239,7 @@ const generateData = (startX) => [
         position: [400 + startX, 122, 250],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -247,7 +247,7 @@ const generateData = (startX) => [
         position: [900 + startX, 122, 250],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -255,7 +255,7 @@ const generateData = (startX) => [
         position: [1400 + startX, 122, 250],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -263,7 +263,7 @@ const generateData = (startX) => [
         position: [-100 + startX, 122, 850],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -271,7 +271,7 @@ const generateData = (startX) => [
         position: [400 + startX, 122, 850],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -279,7 +279,7 @@ const generateData = (startX) => [
         position: [900 + startX, 122, 850],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
     {
         id: getRandomId(),
@@ -287,7 +287,7 @@ const generateData = (startX) => [
         position: [1400 + startX, 122, 850],
         rotation: [-Math.PI / 2, 0, 0],
         scale: [3.5, 3, 1],
-        color: 0x0000ff
+        color: '#0000ff'
     },
 
 

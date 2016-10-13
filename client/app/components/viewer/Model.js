@@ -9,7 +9,8 @@ export default class Field3D extends Component {
         selectedMeshId: null,
         meshDataPosition: {x: 0, y: 0, z: 0},
         meshDataScale: {x: 0, y: 0, z: 0},
-        meshDataRotation: {x: 0, y: 0, z: 0}
+        meshDataRotation: {x: 0, y: 0, z: 0},
+        meshDataColor: this.props.modelColor
     }
 
     handleResize = (e) => {
@@ -22,13 +23,14 @@ export default class Field3D extends Component {
 
     onObjectClick = (data) => {
         let tmpData = this.refs['STLViewer'].getMeshById(data);
+
         this.setState({
             selectedMeshId: data,
             meshDataPosition: tmpData.position,
             meshDataScale: tmpData.scale,
-            meshDataRotation: tmpData.rotation
+            meshDataRotation: tmpData.rotation,
+            meshDataColor: tmpData.color
         });
-
     }
 
     componentDidMount = () => window.addEventListener('resize', this.handleResize);
@@ -36,7 +38,6 @@ export default class Field3D extends Component {
     getDimensions = (modelId) => this.refs['STLViewer'].getDimensions(modelId);
 
     changeData = (axis, type, e) => {
-        // console.log(e, axis, type, newValue);
         let newValue = parseFloat(e.target.value);
 
         if (type === 'position') {
@@ -61,6 +62,14 @@ export default class Field3D extends Component {
             });
             this.refs['STLViewer'].setMeshDataById(this.state.selectedMeshId, newState, 'rotation');
         }
+    }
+
+    changeColor = (e) => {
+        const color = e.target.value
+        this.setState({
+            meshDataColor: color
+        });
+        this.refs['STLViewer'].setMeshDataById(this.state.selectedMeshId, color, 'color');
     }
 
     changeNrOfModelParts = (e) => this.props.changeNrOfModelParts(parseInt(e.target.value))
@@ -121,6 +130,12 @@ export default class Field3D extends Component {
                         </div>
                         <div>
                             <label>z:</label><input type="number" value={this.state.meshDataRotation.z.toFixed(2)} step="0.01" onChange={this.changeData.bind(this, 'z', 'rotation')}/>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Color</h3>
+                        <div>
+                            <label>Pick a color:</label><input type="color" value={this.state.meshDataColor} onChange={this.changeColor.bind(this)}/>
                         </div>
                     </div>
                 </div>

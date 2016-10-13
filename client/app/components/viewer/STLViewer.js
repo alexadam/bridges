@@ -141,7 +141,7 @@ class STLViewer extends Component {
 
         this.loadPrimitives(this.props.primitiveData, loader).then((primitives) => {
             primitives.forEach((primitiveGeometry, index) => {
-                let mesh = new THREE.Mesh(primitiveGeometry, new THREE.MeshLambertMaterial({overdraw: true, color: '0xffffff'}));
+                let mesh = new THREE.Mesh(primitiveGeometry, new THREE.MeshLambertMaterial({overdraw: true, color: '#ffffff'}));
                 this.modelPrimitives[this.props.primitiveData[index].id] = mesh;
             });
 
@@ -179,7 +179,7 @@ class STLViewer extends Component {
 
         data.forEach((part, index)=>{
             let primitveMesh = this.modelPrimitives[part.primitiveId];
-            let mesh = new THREE.Mesh(primitveMesh.geometry, new THREE.MeshLambertMaterial({overdraw: true, color: '0xffffff'}));
+            let mesh = new THREE.Mesh(primitveMesh.geometry, new THREE.MeshLambertMaterial({overdraw: true, color: '#ffffff'}));
             // this.props.primitiveData[index].meshBB = new THREE.Box3().setFromObject(mesh);
             mesh.onObjectClick = this.props.onObjectClick.bind(null, part.id);
             mesh.userData.id = part.id;
@@ -187,7 +187,7 @@ class STLViewer extends Component {
             this.fullModelData[part.id] = {
                 visible: true,
                 meshIndex: this.fullModel.length - 1,
-                originalColor: part.color || 0xffffff,
+                originalColor: part.color || '#ffffff',
                 selected: false
             };
             mesh.position.set(...part.position);
@@ -237,7 +237,8 @@ class STLViewer extends Component {
         return {
             position: {x: tMesh.position.x,y: tMesh.position.y,z: tMesh.position.z},
             scale: {x: tMesh.scale.x,y: tMesh.scale.y,z: tMesh.scale.z},
-            rotation: {x: tMesh.rotation.x,y: tMesh.rotation.y,z: tMesh.rotation.z}
+            rotation: {x: tMesh.rotation.x,y: tMesh.rotation.y,z: tMesh.rotation.z},
+            color: this.fullModelData[meshId].originalColor
         };
     }
 
@@ -249,6 +250,8 @@ class STLViewer extends Component {
             tMesh.scale.set(data.x, data.y, data.z);
         } else if (type === 'rotation') {
             tMesh.rotation.set(data.x, data.y, data.z);
+        } else if (type === 'color') {
+            this.fullModelData[meshId].originalColor = data;
         }
         this.renderer.render(this.scene, this.camera);
     }
