@@ -114,13 +114,13 @@ export default class Field3D extends Component {
                     <div>
                         <h3>Rotation</h3>
                         <div>
-                            <label>x:</label><input type="number" value={this.state.meshDataRotation.x.toFixed(2)} step="0.01" onChange={this.changeData.bind(this, 'x', 'rotation')}/>
+                            <label>x:</label><input type="number" value={this.state.meshDataRotation.x.toFixed(2)*(180/Math.PI)} step="0.01" onChange={this.changeData.bind(this, 'x', 'rotation')}/>
                         </div>
                         <div>
-                            <label>y:</label><input type="number" value={this.state.meshDataRotation.y.toFixed(2)} step="0.01" onChange={this.changeData.bind(this, 'y', 'rotation')}/>
+                            <label>y:</label><input type="number" value={this.state.meshDataRotation.y.toFixed(2)*(180/Math.PI)} step="0.01" onChange={this.changeData.bind(this, 'y', 'rotation')}/>
                         </div>
                         <div>
-                            <label>z:</label><input type="number" value={this.state.meshDataRotation.z.toFixed(2)} step="0.01" onChange={this.changeData.bind(this, 'z', 'rotation')}/>
+                            <label>z:</label><input type="number" value={this.state.meshDataRotation.z.toFixed(2)*(180/Math.PI)} step="0.01" onChange={this.changeData.bind(this, 'z', 'rotation')}/>
                         </div>
                     </div>
                 </div>
