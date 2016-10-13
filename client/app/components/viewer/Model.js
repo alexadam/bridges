@@ -54,8 +54,9 @@ export default class Field3D extends Component {
             });
             this.refs['STLViewer'].setMeshDataById(this.state.selectedMeshId, newState, 'scale');
         } else if (type === 'rotation') {
+            
             let newState = this.state.meshDataRotation;
-            newState[axis] = newValue;
+            newState[axis] = newValue*(Math.PI/180);
             this.setState({
                 meshDataRotation: newState
             });
