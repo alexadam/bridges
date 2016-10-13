@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import ReactDOM from 'react-dom';
 import THREE from './Three';
+import {STLBinaryExporter} from '../exporter/STLBinaryExporter';
 const OrbitControls = require('three-orbit-controls')(THREE);
 
 class STLViewer extends Component {
@@ -240,6 +241,31 @@ class STLViewer extends Component {
             rotation: {x: tMesh.rotation.x,y: tMesh.rotation.y,z: tMesh.rotation.z},
             color: this.fullModelData[meshId].originalColor
         };
+    }
+
+    getSTL = () => {
+        let stlExporter = new STLBinaryExporter();
+        let data = stlExporter.parse(this.scene);
+        this.download(data, "result", "stl");
+    }
+
+    // Function to download data to a file
+    download = (data, filename, type) => {
+        var a = document.createElement("a"),
+            file = new Blob([data], {type: type});
+        if (window.navigator.msSaveOrOpenBlob) // IE10+
+            window.navigator.msSaveOrOpenBlob(file, filename);
+        else { // Others
+            var url = URL.createObjectURL(file);
+            a.href = url;
+            a.download = filename+'.'+type;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function() {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);  
+            }, 0); 
+        }
     }
 
     setMeshDataById = (meshId, data, type) => {

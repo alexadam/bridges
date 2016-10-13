@@ -73,6 +73,10 @@ export default class Field3D extends Component {
         this.refs['STLViewer'].setMeshDataById(this.state.selectedMeshId, color, 'color');
     }
 
+    exportSTL = (e) => {
+        this.refs['STLViewer'].getSTL();
+    }
+
     changeNrOfModelParts = (e) => this.props.changeNrOfModelParts(parseInt(e.target.value))
 
     render = () => (
@@ -137,6 +141,12 @@ export default class Field3D extends Component {
                         <h3>Color</h3>
                         <div>
                             <label>Pick a color:</label><input type="color" value={this.state.meshDataColor} onChange={this.changeColor.bind(this)}/>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Export</h3>
+                        <div>
+                            <button onClick={this.exportSTL.bind(this)}>As STL</button>
                         </div>
                     </div>
                 </div>
