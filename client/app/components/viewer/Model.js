@@ -95,7 +95,12 @@ export default class Field3D extends Component {
                         onObjectClick={this.onObjectClick}
                         ref="STLViewer"/>
                 </div>
+                <div id="hoverDiv"style={{ visibility: 'hidden', position: 'fixed', left: '50px', top: '50px', backgroundColor: '#364049', color:'white'}}>
+                    <p>ID:</p>
+                    <p id="hoverP">None</p>
+                </div>
                 <div style={{position: 'fixed', right: '50px', top: 0, backgroundColor: 'white'}}>
+
                     <div>
                         <h3>Bridge Parts:</h3>
                         <input type="number" value={this.props.nrOfModelParts} onChange={this.changeNrOfModelParts}/>
@@ -151,5 +156,6 @@ export default class Field3D extends Component {
                     </div>
                 </div>
             </div>
+
         );
 }

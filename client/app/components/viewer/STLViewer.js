@@ -16,7 +16,6 @@ class STLViewer extends Component {
     modelPrimitives = {};
     fullModel = [];
     fullModelData = {};
-
     addMouseListeners = () => {
         this.renderer.domElement.addEventListener('mousedown', (event) => {
             event.preventDefault();
@@ -60,13 +59,25 @@ class STLViewer extends Component {
                      }
                  });
                  intersects[0].object.material.color.set( 0xff00ff );
+                 //hover time
+                 var parentDiv = document.getElementById("hoverDiv");
+                 parentDiv.style.visibility ="visible";
+                 var para = document.createElement("p");
+                 para.id = "hoverP"
+                 var para_content = document.createTextNode(intersects[0].object.userData.id);
+                 para.appendChild(para_content)
+                 var itemChild = document.getElementById("hoverP");
+                 parentDiv.replaceChild(para,itemChild)
+                 //hover stuff done
                  this.renderer.render(this.scene, this.camera);
              } else {
                  Object.keys(this.fullModelData).forEach((key) => {
                      if (!this.fullModelData[key].selected) {
                          this.fullModel[this.fullModelData[key].meshIndex].material.color.set(this.fullModelData[key].originalColor)
+                        document.getElementById("hoverDiv").style.visibility ="hidden";
                      } else {
                          this.fullModel[this.fullModelData[key].meshIndex].material.color.set(0xff0000);
+                                        
                      }
                  });
                  this.renderer.render(this.scene, this.camera);
