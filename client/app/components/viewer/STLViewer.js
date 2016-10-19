@@ -104,10 +104,10 @@ class STLViewer extends Component {
     }
 
     applyResize() {
-        // this.camera.aspect = window.innerWidth / window.innerHeight;
-        this.camera.aspect = window.innerWidth / window.innerHeight;
+        let width = window.innerWidth * 0.8;
+        this.camera.aspect = width / window.innerHeight;
         this.camera.updateProjectionMatrix();
-        this.renderer.setSize( window.innerWidth, window.innerHeight );
+        this.renderer.setSize( width, window.innerHeight );
         this.renderer.render(this.scene, this.camera);
     }
 
